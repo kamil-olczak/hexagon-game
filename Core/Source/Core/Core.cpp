@@ -1,13 +1,22 @@
+#include "Headers.h"
 #include "Core.h"
-
-#include <iostream>
-
+/**
+ * Starts main Thread
+ *
+ * \return
+ */
 namespace Core {
 
-	void PrintHelloWorld()
-	{
-		std::cout << "Hello World!\n";
-		std::cin.get();
-	}
+	int launch() {
 
+		const HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+		console::setConsoleFont(hConsole);
+		console::resetCursor(hConsole);
+
+		bool gameLoopStarted = false;
+
+		return initMenu(hConsole, gameLoopStarted);
+
+	}
 }
